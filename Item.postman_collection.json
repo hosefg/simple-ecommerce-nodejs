@@ -1,0 +1,141 @@
+{
+	"info": {
+		"_postman_id": "3d87e71e-1838-42ac-8476-4a780de87b99",
+		"name": "Item",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30476385"
+	},
+	"item": [
+		{
+			"name": "GET All Item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOjEsImlhdCI6MTcyODA1NDc1Nn0.l7Mqakq2cwSb2yY6cKAu3t_tkpA4CSJ2Zbnw18iwbSI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/item?search_by_name=Iphone",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"item"
+					],
+					"query": [
+						{
+							"key": "item_type",
+							"value": "Kendaraan",
+							"disabled": true
+						},
+						{
+							"key": "min_price",
+							"value": "2000000",
+							"disabled": true
+						},
+						{
+							"key": "max_price",
+							"value": "100000000",
+							"disabled": true
+						},
+						{
+							"key": "sort_by_price",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "sort_by_view",
+							"value": "DESC",
+							"disabled": true
+						},
+						{
+							"key": "search_by_name",
+							"value": "Iphone"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Add Item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOjEsImlhdCI6MTcyODA1NDc1Nn0.l7Mqakq2cwSb2yY6cKAu3t_tkpA4CSJ2Zbnw18iwbSI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"item_name\": \"Iphone 15 Pro Max \",\n    \"item_description\": \"Sepeda yang cocok untuk digunakan oleh anak kecil karena ukurannya yang kecil\",\n    \"item_price\": 17000000,\n    \"item_type\": \"Gadget\",\n    \"item_stock\": 400\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/item",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"item"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET One Item by ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOjEsImlhdCI6MTcyODA1NDc1Nn0.l7Mqakq2cwSb2yY6cKAu3t_tkpA4CSJ2Zbnw18iwbSI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/item/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"item",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

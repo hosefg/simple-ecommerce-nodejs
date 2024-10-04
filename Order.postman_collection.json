@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "31e97abb-62c7-4d39-a39e-27339856c858",
+		"name": "Order",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30476385"
+	},
+	"item": [
+		{
+			"name": "POST Order ( Cart -> Order)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOjIsImlhdCI6MTcyODA4MTIzNH0.D61wL_eq5Sqvz_tvV_iZHLrVc2RI9VaKvdVnBkXhra4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/order/create-order",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"order",
+						"create-order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Account Order History",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOjIsImlhdCI6MTcyODA4MTIzNH0.D61wL_eq5Sqvz_tvV_iZHLrVc2RI9VaKvdVnBkXhra4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/order/history",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"order",
+						"history"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Order by Order Number",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50SWQiOjIsImlhdCI6MTcyODA4MTIzNH0.D61wL_eq5Sqvz_tvV_iZHLrVc2RI9VaKvdVnBkXhra4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/order/:order_number",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"order",
+						":order_number"
+					],
+					"variable": [
+						{
+							"key": "order_number",
+							"value": "ORD-1728056174185-6307"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

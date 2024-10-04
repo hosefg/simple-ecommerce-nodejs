@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "c06e68e2-ae3f-48d5-885a-b52df43426a6",
+		"name": "Account",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30476385"
+	},
+	"item": [
+		{
+			"name": "GET All Account",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/account",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Create Account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Anton\",\n    \"lastName\": \"Galong\",\n    \"email\": \"anton3@gmail.com\",\n    \"password\": \"abcdefghi\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/account",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"anton3@gmail.com\",\n    \"password\": \"abcdefghi\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/account/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"account",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET One Account/:uuid",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/account/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"account",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
