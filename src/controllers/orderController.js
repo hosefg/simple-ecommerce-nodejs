@@ -41,11 +41,11 @@ exports.createOrderFromCart = async (req, res) => {
         };
 
         let totalAmount = cart.total_ammount;
-        let discountAmount = cart.total_ammount
+        let discountAmount = 0;
         if (account.flagNewAccount) {
           totalAmount *= 0.7;  // Apply 30% discount
-          discountAmount *= 0.3
-        }
+          discountAmount = cart.totalAmount * 0.3
+        } 
 
         // Create an order
         const newOrder = await Order.create({
