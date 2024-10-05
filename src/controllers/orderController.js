@@ -3,6 +3,8 @@ const CartItem = require('../models/cart-item')
 const Order = require('../models/order')
 const OrderItem = require('../models/order-item')
 const Item = require('../models/item')
+const express = require('express');
+const Account = require('../models/account');
 
 exports.createOrderFromCart = async (req, res) => {
     try {
@@ -26,16 +28,30 @@ exports.createOrderFromCart = async (req, res) => {
             return res.status(404).json({ message: 'Active cart not found for this user.' });
         }
 
+          // Fetch the account details
+        const account = await Account.findByPk(req.accountId);
+        if (!account) {
+        return res.status(404).json({ message: 'Account not found.' });
+        }
+
         const generateOrderNumber = () => {
             const timestamp = Date.now(); // Current timestamp
             const randomPart = Math.floor(Math.random() * 10000); // Random number
             return `ORD-${timestamp}-${randomPart}`; // Example format: ORD-1627698471875-1234
         };
 
+        let totalAmount = cart.total_ammount;
+        let discountAmount = cart.total_ammount
+        if (account.flagNewAccount) {
+          totalAmount *= 0.7;  // Apply 30% discount
+          discountAmount *= 0.3
+        }
+
         // Create an order
         const newOrder = await Order.create({
             accountId: req.accountId, // Ensure you have the accountId from authentication middleware
-            total_price: cart.total_ammount, // Assume total amount is stored in the cart
+            total_price: totalAmount, // Assume total amount is stored in the cart
+            discount_price: discountAmount,
             order_status: "Placed",
             order_number: generateOrderNumber()
         });
@@ -56,6 +72,11 @@ exports.createOrderFromCart = async (req, res) => {
 
         // Update cart status to 'completed'
         await cart.update({ cart_status: 'completed' });
+        // Set flagNewAccount to false after the first purchase
+        if (account.flagNewAccount) {
+            account.flagNewAccount = false;
+            await account.save();  // Update the account to reflect that the discount has been used
+        }
 
         return res.status(201).json({ message: 'Order created successfully!', order: newOrder });
     } catch (error) {

@@ -14,6 +14,10 @@ const Order = sequelize.define('order', {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
+    discount_price: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+    },
 });
 
 module.exports = Order;

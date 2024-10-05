@@ -31,6 +31,10 @@ const Account = sequelize.define('account', {
       }
     },
   },
+  flagNewAccount: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: true,  // New accounts get the discount by default
+  }
 });
 
 Account.prototype.comparePassword = async function(password) {
