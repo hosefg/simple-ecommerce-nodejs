@@ -1,0 +1,68 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table accounts as A {
+  id bigserial [pk]
+  firstName varchar [not null]
+  lastName varchar [not null]
+  email varchar [not null]
+  password varchar [not null]
+  created_at timestamptz [not null, default: 'now()']
+  updated_at timestamptz [not null, default: 'now()']
+}
+
+Table items  {
+  id bigserial [pk]
+  views int [not null]
+  item_name varchar [not null]
+  item_description varchar [not null]
+  item_price bigint [not null]
+  item_type varchar [not null]
+  item_stock int [not null]
+  created_at timestamptz [default: 'now()']
+  updated_at timestamptz [default: 'now()']
+
+}
+
+Table carts {
+  id bigserial [pk]
+  cart_status varchar [not null]
+  accounts_id bigint [ref: > A.id, not null]
+  total_ammount int [not null]
+  created_at timestamptz [default: 'now()']
+  updated_at timestamptz [default: 'now()']
+}
+
+Table cart_items {
+  id bigserial [pk]
+  cart_id bigint [ref: > carts.id, not null]
+  item_id bigint [ref: > items.id, not null]
+  item_ammount int [not null]
+  item_price int [not null]
+  total_price int [not null]
+  created_at timestamptz [default: 'now()']
+  updated_at timestamptz [default: 'now()']
+}
+
+Table orders {
+  id bigserial [pk]
+  accounts_id bigint [ref: > accounts.id, not null]
+  order_number varchar [not null]
+  order_status varchar [not null]
+  total_price int [not null]
+  created_at timestamptz [default: 'now()']
+  updated_at timestamptz [default: 'now()']
+}
+
+Table order_items {
+  id bigserial [pk]
+  order_id bigint [ref: > orders.id, not null]
+  item_id bigint [ref: > items.id, not null]
+  item_ammount int [not null]
+  item_price int [not null]
+  total_price int [not null]
+  created_at timestamptz [default: 'now()']
+  updated_at timestamptz [default: 'now()']
+}
+
+
